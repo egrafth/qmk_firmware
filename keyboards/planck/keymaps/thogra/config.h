@@ -1,10 +1,5 @@
 #pragma once
 
-// Include header files
-//#include "quantum.h"
-//#include "keymap_german.h"
-
-
 #ifdef AUDIO_ENABLE
     #define STARTUP_SONG SONG(PLANCK_SOUND)
     // #define STARTUP_SONG SONG(NO_SOUND)

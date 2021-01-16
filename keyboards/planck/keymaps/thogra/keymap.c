@@ -16,19 +16,7 @@
 
 #include QMK_KEYBOARD_H
 #include "muse.h"
-
-// Variables
-typedef struct
-{
-  int  keycode;
-  bool keycodeNeedsShift;
-  int  shiftedKeycode;
-  int  shiftedKeycodeNeedsShift;
-} GerKeycode;
-
-bool       gerShift      = false;
-bool       gerShiftEvent = false;
-GerKeycode gerKeycode = {0, false, 0, true};
+#include "special.h"
 
 // Definitions
 enum planck_layers {
@@ -64,12 +52,12 @@ enum planck_keycodes {
 };
 
 // Define the keycodes for an us layout but using german os
-const GerKeycode gerAE     = {KC_NUHS, true, KC_2, true};
-const GerKeycode gerBSpace = {KC_BSPC, false, KC_DEL, false};
-const GerKeycode gerComma  = {KC_COMM, false, KC_NUBS, false};
-const GerKeycode gerDot    = {KC_DOT, false, KC_NUBS, true};
-const GerKeycode gerMinus  = {KC_7, true, KC_MINS, true};
-const GerKeycode gerOE     = {KC_COMM, true, KC_DOT, true};
+const Key gerAE     = {KC_NUHS, true, KC_2, true};
+const Key gerBSpace = {KC_BSPC, false, KC_DEL, false};
+const Key gerComma  = {KC_COMM, false, KC_NUBS, false};
+const Key gerDot    = {KC_DOT, false, KC_NUBS, true};
+const Key gerMinus  = {KC_7, true, KC_MINS, true};
+const Key gerOE     = {KC_COMM, true, KC_DOT, true};
 
 #define LOWER_GER MO(_LOWER_GER)
 #define RAISE_GER MO(_RAISE_GER)
@@ -349,73 +337,34 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
       break;
 	  
-	/* Special key codes so that the keyboard behaves as a US keyboard even if os assumes GER */
-	case GER_SHIFT:
-	
-	  // Update shift indicator
-      if (record->event.pressed)     gerShift = true;
-      else                           gerShift = false;
-      gerShiftEvent = false;
-	  
-      // Break only if non GER_XY
-	  if (gerKeycode.keycode==0 && gerKeycode.shiftedKeycode==0)
-      {
-        if (gerShift == true)     register_code(KC_LSHIFT);
-		else                      unregister_code(KC_LSHIFT);
-        return false;
-      };
-      gerShiftEvent = true;
-      // No break!!!
+    /* Special key codes so that the keyboard behaves as a US keyboard even if os assumes GER */
+    case GER_SHIFT:
+      pressedShift(record);
+      return false;
 	
     case GER_AE:
-    case GER_BSPC:
-    case GER_COMMA:
-    case GER_DOT:
-    case GER_MINUS:
-    case GER_OE:
-      if (keycode == GER_AE)           gerKeycode = gerAE;
-      else if (keycode == GER_BSPC)    gerKeycode = gerBSpace;
-      else if (keycode == GER_COMMA)   gerKeycode = gerComma;
-      else if (keycode == GER_DOT)     gerKeycode = gerDot;
-      else if (keycode == GER_MINUS)   gerKeycode = gerMinus;
-      else if (keycode == GER_OE)      gerKeycode = gerOE;
-	  
-      if (record->event.pressed || gerShiftEvent==true)
-      {
-        gerShiftEvent = false;
-//        if (get_mods() & MOD_BIT(KC_LSHIFT) || get_mods() & MOD_BIT(KC_RSHIFT)){
-        if (gerShift == false) 
-        {
-          if (gerKeycode.keycodeNeedsShift == true)     register_code(KC_LSHIFT);
-          else                                          unregister_code(KC_LSHIFT);
-          register_code(gerKeycode.keycode);
-        } 
-        else
-        {
-          if (gerKeycode.shiftedKeycodeNeedsShift == true)     register_code(KC_LSHIFT);
-          else                                                 unregister_code(KC_LSHIFT);
-          register_code(gerKeycode.shiftedKeycode);
-        };
-      }
-      else
-      {
-        if (gerShift == false)
-        {
-          unregister_code(gerKeycode.keycode);
-          unregister_code(KC_LSHIFT);
-		}
-        else
-        {
-          unregister_code(gerKeycode.shiftedKeycode);
-          register_code(KC_LSHIFT);
-        };
-        gerKeycode.keycode                  = 0;
-        gerKeycode.keycodeNeedsShift        = false;
-        gerKeycode.shiftedKeycode           = 0;
-        gerKeycode.shiftedKeycodeNeedsShift = false;
-      };
+      pressed(gerAE, record);
       return false;
-	  break;
+      
+    case GER_BSPC:
+      pressed(gerBSpace, record);
+      return false;
+
+    case GER_COMMA:
+      pressed(gerComma, record);
+      return false;
+
+    case GER_DOT:
+      pressed(gerDot, record);
+      return false;
+
+    case GER_MINUS:
+      pressed(gerMinus, record);
+      return false;
+
+    case GER_OE:
+      pressed(gerOE, record);
+      return false;
   };
   return true;
 }
