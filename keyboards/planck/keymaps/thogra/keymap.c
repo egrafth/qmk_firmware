@@ -42,22 +42,56 @@ enum planck_keycodes {
   QWERTY_US,
   
   GER_SHIFT,
+  GER_2,
+  GER_3,
+  GER_6,
+  GER_7,
+  GER_8,
+  GER_9,
+  GER_0,
   GER_AE,
   GER_BSPC,
+  GER_COLON,
   GER_COMMA,
   GER_DOT,
+  GER_EQL,
+  GER_LCBR,
+  GER_LPRN,
   GER_MINUS,
   GER_OE,
+  GER_QUOTE,
+  GER_RCBR,
+  GER_RPRN,
+  GER_SS,
+  GER_SLSH,
+  GER_UE,
   _GER_LAST
 };
 
 // Define the keycodes for an us layout but using german os
-const Key gerAE     = {KC_NUHS, true, KC_2, true};
-const Key gerBSpace = {KC_BSPC, false, KC_DEL, false};
-const Key gerComma  = {KC_COMM, false, KC_NUBS, false};
-const Key gerDot    = {KC_DOT, false, KC_NUBS, true};
-const Key gerMinus  = {KC_7, true, KC_MINS, true};
-const Key gerOE     = {KC_COMM, true, KC_DOT, true};
+const Key ger2      = {KC_2,    MOD_NONE,  KC_Q,    MOD_ALTGR};
+const Key ger3      = {KC_3,    MOD_NONE,  KC_BSLS, MOD_NONE};
+const Key ger6      = {KC_6,    MOD_NONE,  KC_GRV,  MOD_NONE};
+const Key ger7      = {KC_7,    MOD_NONE,  KC_6,    MOD_SHIFT};
+const Key ger8      = {KC_8,    MOD_NONE,  KC_RBRC, MOD_SHIFT};
+const Key ger9      = {KC_9,    MOD_NONE,  KC_8,    MOD_SHIFT};
+const Key ger0      = {KC_0,    MOD_NONE,  KC_9,    MOD_SHIFT};
+const Key gerAE     = {KC_QUOT, MOD_NONE,  KC_QUOT, MOD_SHIFT};
+const Key gerBSpace = {KC_BSPC, MOD_NONE,  KC_DEL,  MOD_NONE};
+const Key gerComma  = {KC_COMM, MOD_NONE,  KC_NUBS, MOD_NONE};
+const Key gerColon  = {KC_COMM, MOD_SHIFT, KC_DOT,  MOD_SHIFT};
+const Key gerDot    = {KC_DOT,  MOD_NONE,  KC_NUBS, MOD_SHIFT};
+const Key gerEQL    = {KC_0,    MOD_SHIFT, KC_RCBR, MOD_NONE};
+const Key gerLCBR   = {KC_7,    MOD_ALTGR, KC_8,    MOD_ALTGR};
+const Key gerLPRN   = {KC_8,    MOD_SHIFT, KC_8,    MOD_ALTGR};
+const Key gerMinus  = {KC_SLSH, MOD_NONE,  KC_SLSH, MOD_SHIFT};
+const Key gerOE     = {KC_SCLN, MOD_NONE,  KC_SCLN, MOD_SHIFT};
+const Key gerQuote  = {KC_NUHS, MOD_SHIFT, KC_2,    MOD_SHIFT};
+const Key gerRCBR   = {KC_0,    MOD_ALTGR, KC_9,    MOD_ALTGR};
+const Key gerRPRN   = {KC_9,    MOD_SHIFT, KC_9,    MOD_ALTGR};
+const Key gerSS     = {KC_MINS, MOD_NONE,  KC_MINS, MOD_NONE};
+const Key gerSLSH   = {KC_7,    MOD_SHIFT, KC_MINS, MOD_SHIFT};
+const Key gerUE     = {KC_LBRC, MOD_NONE,  KC_LBRC, MOD_SHIFT};
 
 #define LOWER_GER MO(_LOWER_GER)
 #define RAISE_GER MO(_RAISE_GER)
@@ -67,21 +101,21 @@ const Key gerOE     = {KC_COMM, true, KC_DOT, true};
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Qwerty - German
- * ,-----------------------------------------------------------------------------------.
- * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Esc  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Brite| Ctrl | Alt  | GUI  |Lower |Shift |Space |Raise | Left | Down |  Up  |Right |
- * `-----------------------------------------------------------------------------------'
+ * ,----------------------------------------------------------------------------------------------------.
+ * | Esc   |   Q   |   W   |   E   |   R   |   T   |   Y   |   U   |   I   |   O   |   P   | Bksp / Del |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+------------|
+ * | Tab   |   A   |   S   |   D   |   F   |   G   |   H   |   J   |   K   |   L   | ; / : |   ' / "    |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+------------|
+ * | Shift |   Z   |   X   |   C   |   V   |   B   |   N   |   M   | , / < | . / > | / / ? |   Enter    |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+------------|
+ * |       | GUI   | Alt   | Ctrl  | Lower | Shift | Space | Raise | Left  | Down  |  Up   |   Right    |
+ * `----------------------------------------------------------------------------------------------------'
  */
 [_QWERTY_GER] = LAYOUT_planck_grid(
-    KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,      KC_T,      KC_Z,    KC_U,      KC_I,      KC_O,    KC_P,      GER_BSPC,
-    KC_ESC,    KC_A,    KC_S,    KC_D,    KC_F,      KC_G,      KC_H,    KC_J,      KC_K,      KC_L,    GER_OE,    GER_AE,
-    GER_SHIFT, KC_Y,    KC_X,    KC_C,    KC_V,      KC_B,      KC_N,    KC_M,      GER_COMMA, GER_DOT, GER_MINUS, KC_ENT ,
-    RGB_TOG,   KC_LCTL, KC_LALT, KC_LSFT, LOWER_GER, GER_SHIFT, KC_SPC,  RAISE_GER, KC_LEFT,   KC_DOWN, KC_UP,     KC_RGHT
+    KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,      KC_T,      KC_Z,    KC_U,      KC_I,      KC_O,    KC_P,      GER_BSPC,
+    KC_TAB,    KC_A,    KC_S,    KC_D,    KC_F,      KC_G,      KC_H,    KC_J,      KC_K,      KC_L,    GER_COLON, GER_QUOTE,
+    GER_SHIFT, KC_Y,    KC_X,    KC_C,    KC_V,      KC_B,      KC_N,    KC_M,      GER_COMMA, GER_DOT, GER_SLSH,  KC_ENT ,
+    RGB_TOG,   KC_LGUI, KC_LALT, KC_LCTL, LOWER_GER, GER_SHIFT, KC_SPC,  RAISE_GER, KC_LEFT,   KC_DOWN, KC_UP,     KC_RGHT
 ),
 
 /* Qwerty - US
@@ -114,8 +148,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_COLEMAK] = LAYOUT_planck_grid(
-    KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,     KC_G,    KC_J,    KC_L,     KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
-    KC_ESC,  KC_A,    KC_R,    KC_S,    KC_T,     KC_D,    KC_H,    KC_N,     KC_E,    KC_I,    KC_O,    KC_QUOT,
+    KC_ESC,  KC_Q,    KC_W,    KC_F,    KC_P,     KC_G,    KC_J,    KC_L,     KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
+    KC_TAB,  KC_A,    KC_R,    KC_S,    KC_T,     KC_D,    KC_H,    KC_N,     KC_E,    KC_I,    KC_O,    KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,     KC_B,    KC_K,    KC_M,     KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
     BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER_US, KC_SPC,  KC_SPC,  RAISE_US, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
@@ -132,8 +166,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_DVORAK] = LAYOUT_planck_grid(
-    KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,     KC_Y,    KC_F,    KC_G,     KC_C,    KC_R,    KC_L,    KC_BSPC,
-    KC_ESC,  KC_A,    KC_O,    KC_E,    KC_U,     KC_I,    KC_D,    KC_H,     KC_T,    KC_N,    KC_S,    KC_SLSH,
+    KC_ESC,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,     KC_Y,    KC_F,    KC_G,     KC_C,    KC_R,    KC_L,    KC_BSPC,
+    KC_TAB,                                KC_A,    KC_O,    KC_E,    KC_U,     KC_I,    KC_D,    KC_H,     KC_T,    KC_N,    KC_S,    KC_SLSH,
     KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,     KC_X,    KC_B,    KC_M,     KC_W,    KC_V,    KC_Z,    KC_ENT ,
     BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER_US, KC_SPC,  KC_SPC,  RAISE_US, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
@@ -175,21 +209,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 /* Raise - German
- * ,-----------------------------------------------------------------------------------.
- * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   -  |   =  |   [  |   ]  |  \   |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO # |ISO / |Pg Up |Pg Dn |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
- * `-----------------------------------------------------------------------------------'
+ * ,----------------------------------------------------------------------------------------------------.
+ * | Esc   |       |       |       |       | ( / [ | ) / ] | = / + |       |       |       | Bksp / Del |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+------------|
+ * | Tab   | 1 / ! | 2 / @ | 3 / # | 4 / $ | 5 / % | 6 / ^ | 7 / & | 8 / * | 9 / ( | 0 / ) |            |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+------------|
+ * | Shift |       |       |       |       |       |       |       |       |       |       |   Enter    |
+ * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+------------|
+ * |       | GUI   | Alt   | Ctrl  | Lower | Shift | Space | Raise | Left  | Down  |  Up   |   Right    |
+ * `----------------------------------------------------------------------------------------------------'
  */
 [_RAISE_GER] = LAYOUT_planck_grid(
-    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,
-    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
-    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NUHS, KC_NUBS, KC_PGUP, KC_PGDN, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
+    KC_GRV,  _______, _______, _______, GER_LCBR,  GER_LPRN,  GER_RPRN, GER_RCBR,  GER_EQL, GER_SLSH,  _______, GER_BSPC,
+    KC_DEL,  KC_1,    GER_2,   GER_3,   KC_4,      KC_5,      GER_6,    GER_7,     GER_8,   GER_9,     GER_0,   _______,
+    _______, GER_AE,  GER_OE,  GER_UE,  GER_SS,    _______,   _______,  _______,   _______, _______,   _______, _______,
+    XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, LOWER_GER, GER_SHIFT, KC_SPC,   RAISE_GER, KC_LEFT,   KC_DOWN, KC_UP,  KC_RGHT
 ),
 
 /* Raise - US
@@ -342,12 +376,44 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       pressedShift(record);
       return false;
 	
+    case GER_2:
+      pressed(ger2, record);
+      return false;
+
+    case GER_3:
+      pressed(ger3, record);
+      return false;
+
+    case GER_6:
+      pressed(ger6, record);
+      return false;
+
+    case GER_7:
+      pressed(ger7, record);
+      return false;
+
+    case GER_8:
+      pressed(ger8, record);
+      return false;
+
+    case GER_9:
+      pressed(ger9, record);
+      return false;
+
+    case GER_0:
+      pressed(ger0, record);
+      return false;
+
     case GER_AE:
       pressed(gerAE, record);
       return false;
       
     case GER_BSPC:
       pressed(gerBSpace, record);
+      return false;
+
+    case GER_COLON:
+      pressed(gerColon, record);
       return false;
 
     case GER_COMMA:
@@ -358,12 +424,48 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       pressed(gerDot, record);
       return false;
 
+    case GER_EQL:
+      pressed(gerEQL, record);
+      return false;
+
+    case GER_LCBR:
+      pressed(gerLCBR, record);
+      return false;
+
+    case GER_LPRN:
+      pressed(gerLPRN, record);
+      return false;
+
     case GER_MINUS:
       pressed(gerMinus, record);
       return false;
 
     case GER_OE:
       pressed(gerOE, record);
+      return false;
+
+    case GER_QUOTE:
+      pressed(gerQuote, record);
+      return false;
+
+    case GER_RCBR:
+      pressed(gerRCBR, record);
+      return false;
+
+    case GER_RPRN:
+      pressed(gerRPRN, record);
+      return false;
+
+    case GER_SLSH:
+      pressed(gerSLSH, record);
+      return false;
+
+    case GER_SS:
+      pressed(gerSS, record);
+      return false;
+
+    case GER_UE:
+      pressed(gerUE, record);
       return false;
   };
   return true;
