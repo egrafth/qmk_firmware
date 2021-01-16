@@ -16,11 +16,11 @@ Furthermore, I am mot perfectly satisfied with the default Planck layout. For ex
 
 I always use the same layout (if the Planck is connected to a us or german pc):
 
-| Base |      |      |      |      |      |      |      |      |      |      |            |
-|------|------|------|------|------|------|------|------|------|------|------|------------|
-| Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp (Del) |
-| Esc  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  | ; (:)| ' (")      |
-| Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  | , (<)| . (>)| / (?)|   Enter    |
-| Brite| Ctrl | Alt  | GUI  |Lower |Shift |Space |Raise | Left | Down |  Up  |   Right    |
+| *Base*    |          |           |           |           |           |           |           |           |           |           |           |
+|-----------|----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| **Tab**   | Q        | W         | E         | R         | T         | Y         | U         | I         | O         | P         | **Bksp (Del)** |
+| **Esc**   | A        | S         | D         | F         | G         | H         | J         | K         | L         | ; (:)     | ' (")      |
+| **Shift** | Z        | X         | C         | V         | B         | N         | M         | , (<)     | . (>)     | / (?)     | **Enter**  |
+| **Brite** | **Ctrl** | **Alt**   | **GUI**   | **Lower** | **Shift** | **Space** | **Raise** | **Left**  | **Down**  | **Up**    | **Right**  |
 
 The characters in '()' are the characters that are send if the key is pressed with 'shift'.
