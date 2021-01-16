@@ -111,10 +111,12 @@ void pressedShift
     pressed(_key, record);
   }
 
-  // Any other key was pressed together with 'shift' - nothing special needs to be done
+  // Any other key was pressed together with 'shift' - just apply 'shift'
   else
   {  
     _shiftEvent = false;
+    if (_shift == true)     register_code(KC_LSHIFT);
+		else                    unregister_code(KC_LSHIFT);
   };
 };
 
