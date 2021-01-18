@@ -78,7 +78,9 @@ enum planck_keycodes {
   GER_TILD,
   GER_UE,
   GER_UNDS,
-  _GER_LAST
+  
+  SP_ESC,
+  _SP_LAST
 };
 
 // Define the keycodes for an us layout but using german os
@@ -118,6 +120,8 @@ const Key gerTilde  = {KC_RBRC, MOD_ALTGR, 0,       MOD_NONE};
 const Key gerUE     = {KC_LBRC, MOD_NONE,  KC_LBRC, MOD_SHIFT};
 const Key gerUNDS   = {KC_SLSH, MOD_SHIFT, 0,       MOD_NONE};
 
+const Key spESC     = {KC_ESC,  MOD_NONE,  KC_PAUS, MOD_CTRL};
+
 #define LOWER_GER MO(_LOWER_GER)
 #define RAISE_GER MO(_RAISE_GER)
 #define LOWER_US MO(_LOWER_US)
@@ -127,20 +131,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Qwerty - German
  * ,----------------------------------------------------------------------------------------------------.
- * | Esc   |   Q   |   W   |   E   |   R   |   T   |   Y   |   U   |   I   |   O   |   P   | Bksp / Del |
+ * |Esc/Brk|   Q   |   W   |   E   |   R   |   T   |   Y   |   U   |   I   |   O   |   P   | Bksp / Del |
  * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+------------|
  * | Tab   |   A   |   S   |   D   |   F   |   G   |   H   |   J   |   K   |   L   | ; / : |   ' / "    |
  * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+------------|
  * | Shift |   Z   |   X   |   C   |   V   |   B   |   N   |   M   | , / < | . / > | / / ? |   Enter    |
  * |-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+------------|
- * | CAPS  | GUI   | App   | Alt   | Shift | Lower | Raise | Space | Ctrl  | Left  | Down  |   Right    |
+ * | Del   | GUI   | App   | Alt   | Shift | Lower | Raise | Space | Ctrl  | Left  | Down  |   Right    |
  * `----------------------------------------------------------------------------------------------------'
  */
 [_QWERTY_GER] = LAYOUT_planck_grid(
-    KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,      KC_T,      KC_Z,      KC_U,    KC_I,      KC_O,    KC_P,      GER_BSPC,
+    SP_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,      KC_T,      KC_Z,      KC_U,    KC_I,      KC_O,    KC_P,      GER_BSPC,
     KC_TAB,    KC_A,    KC_S,    KC_D,    KC_F,      KC_G,      KC_H,      KC_J,    KC_K,      KC_L,    GER_COLON, GER_QUOTE,
     GER_SHIFT, KC_Y,    KC_X,    KC_C,    KC_V,      KC_B,      KC_N,      KC_M,    GER_COMMA, GER_DOT, GER_SLSH,  KC_ENT ,
-    KC_CAPS,   KC_LGUI, KC_APP,  KC_LALT, GER_SHIFT, LOWER_GER, RAISE_GER, KC_SPC,  KC_LCTL,   KC_LEFT, KC_DOWN,   KC_RGHT
+    KC_DEL,    KC_LGUI, KC_APP,  KC_LALT, GER_SHIFT, LOWER_GER, RAISE_GER, KC_SPC,  KC_LCTL,   KC_LEFT, KC_DOWN,   KC_RGHT
 ),
 
 /* Qwerty - US
@@ -151,14 +155,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Brite| Ctrl | Alt  | GUI  |Lower |Shift |Space |Raise | Left | Down |  Up  |Right |
+ * | Del  | GUI  | App  | Alt  | Shift|Lower |Raise |Space | Ctrl | LefT | Down |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY_US] = LAYOUT_planck_grid(
-    KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,    KC_Y,    KC_U,     KC_I,    KC_O,    KC_P,    KC_BSPC,
-    KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,     KC_G,    KC_H,    KC_J,     KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,     KC_B,    KC_N,    KC_M,     KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
-    RGB_TOG, KC_LCTL, KC_LALT, KC_LSFT, LOWER_US, KC_LSFT, KC_SPC,  RAISE_US, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+    SP_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,    KC_Y,     KC_U,   KC_I,    KC_O,    KC_P,    KC_BSPC,
+    KC_LALT, KC_A,    KC_S,    KC_D,    KC_F,     KC_G,    KC_H,     KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,     KC_B,    KC_N,     KC_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,
+    KC_DEL,  KC_LGUI, KC_APP,  KC_LALT, KC_LSFT, LOWER_US, RAISE_US, KC_SPC, KC_LCTL, KC_LEFT, KC_DOWN, KC_RGHT
 ),
 
 /* Colemak
@@ -199,38 +203,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Lower - German
  * ,-----------------------------------------------------------------------------------.
- * | ESC  |  F1  |  F2  |  F3  |  F4  |      |      | Pg Up|  Up  | Home |      | Bksp |
+ * | ESC  |  F1  |  F2  |  F3  |  F4  |  F4  |  F6  | Pg Up|  Up  | Home |      | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Tab  |  F5  |  F6  |  F7  |  F8  |      |      | Left | Down | Right|      |      |
+ * | Alt  |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 | Left | Down | Right|      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Shift|  F9  |  F10 |  F11 |  F12 |      |      | Pg Dn|      | End  |      | Enter|
+ * | Shift|      |      |      |      |      |      | Pg Dn|      | End  |      | Enter|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | CAPS | OS   | APP  | Alt  | Shift| Lower| Raise| Space| Ctrl |      | Up   |      |
+ * | Del  | OS   | APP  | Alt  | Shift| Lower| Raise| Space| Ctrl |      | Up   |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER_GER] = LAYOUT_planck_grid(
-    _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   XXXXXXX,   XXXXXXX,   KC_PGUP, KC_UP,   KC_HOME, XXXXXXX, GER_BSPC,
-    _______, KC_F5,   KC_F6,   KC_F7,   KC_F8,   XXXXXXX,   XXXXXXX,   KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX,
-    _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX,   XXXXXXX,   KC_PGDN, XXXXXXX, KC_END,  XXXXXXX, KC_ENT,
+    _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,     KC_F6,     KC_PGUP, KC_UP,   KC_HOME, XXXXXXX, GER_BSPC,
+    KC_LALT, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,    KC_F12,    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,   KC_PGDN, XXXXXXX, KC_END,  XXXXXXX, KC_ENT,
     _______, _______, _______, _______, _______, LOWER_GER, RAISE_GER, _______, _______, XXXXXXX, KC_UP,   XXXXXXX
 ),
 
 /* Lower - US
  * ,-----------------------------------------------------------------------------------.
- * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Bksp |
+ * | ESC  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   &  |   *  |   (  |   )  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   _  |   +  |   {  |   }  |  |   |
+ * | Del  |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |   _  |   +  |   {  |   }  |  |   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO ~ |ISO | | Home | End  |      |
+ * | Shift|  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO ~ |ISO | | Home | End  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
+ * | Del  |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER_US] = LAYOUT_planck_grid(
-    KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR,    KC_ASTR,    KC_LPRN, KC_RPRN, KC_BSPC,
-    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDS,    KC_PLUS,    KC_LCBR, KC_RCBR, KC_PIPE,
-    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  S(KC_NUHS), S(KC_NUBS), KC_HOME, KC_END,  _______,
-    _______, _______, _______, _______, _______, _______, _______, _______,    KC_MNXT,    KC_VOLD, KC_VOLU, KC_MPLY
+    _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,    KC_F6,    KC_PGUP, KC_UP,   KC_HOME, XXXXXXX, KC_BSPC,
+    KC_LALT, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,   KC_F12,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  KC_PGDN, XXXXXXX, KC_END,  XXXXXXX, KC_ENT,
+    _______, _______, _______, _______, _______, LOWER_US, RAISE_US, _______, _______, XXXXXXX, KC_UP,   XXXXXXX
 ),
 
 /* Raise - German
@@ -263,10 +267,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE_US] = LAYOUT_planck_grid(
-    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,
-    KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
-    _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NUHS, KC_NUBS, KC_PGUP, KC_PGDN, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
+    KC_EXLM, KC_AT,   KC_DLR,  KC_LBRC, KC_LCBR, KC_LPRN,  KC_RPRN,  KC_RCBR, KC_RBRC, KC_NUBS,  KC_AMPR, KC_PIPE,
+    KC_UNDS, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,     KC_6,     KC_7,    KC_8,    KC_9,     KC_0,    KC_BSLS,
+    KC_TILD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PERC,  KC_CIRC,  KC_EQL,  KC_PLUS, KC_MINUS, KC_ASTR, KC_SLSH,
+    _______, _______, _______, KC_LALT, KC_LSFT, LOWER_US, RAISE_US, KC_SPC,  KC_LCTL,  _______, KC_UP,   _______
 ),
 
 /* Plover layer (http://opensteno.org)
@@ -338,7 +342,12 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   return state;
 }
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+bool process_record_user(uint16_t keycode, keyrecord_t *record) 
+{
+  // Check if keycode correspond to standard definitions
+  if (keycode < SAFE_RANGE)     return true;
+  
+  // Specific keycode handling
   switch (keycode) 
   {
     case QWERTY_GER:
@@ -559,6 +568,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case GER_UNDS:
       pressed(gerUNDS, record);
+      return false;
+      
+    case SP_ESC:
+      pressed(spESC, record);
       return false;
   };
   return true;
