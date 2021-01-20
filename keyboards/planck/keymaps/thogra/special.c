@@ -93,9 +93,9 @@ void pressed
       unregister_code(key.keycode);
       
       // Unregister modifiers
-      if (key.shiftedKeycodeModifier & MOD_ALT)     unregister_code(KC_LALT);
-      if (key.shiftedKeycodeModifier & MOD_ALTGR)   unregister_code(KC_RALT);
-      if (key.shiftedKeycodeModifier & MOD_CTRL)    unregister_code(KC_LCTL);
+      if (key.keycodeModifier & MOD_ALT)     unregister_code(KC_LALT);
+      if (key.keycodeModifier & MOD_ALTGR)   unregister_code(KC_RALT);
+      if (key.keycodeModifier & MOD_CTRL)    unregister_code(KC_LCTL);
       unregister_code(KC_LSHIFT);
     }
 
