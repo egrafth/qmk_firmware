@@ -21,18 +21,18 @@ Base:
 
 | *Base*    |          |           |           |           |           |           |           |           |           |           |           |
 |:---------:|:--------:|:---------:|:---------:|:---------:|:---------:|:---------:|:---------:|:---------:|:---------:|:---------:|:---------:|
-| **Esc**   | Q        | W         | E         | R         | T         | Y         | U         | I         | O         | P         | **Bksp** / **Del** |
+|**Esc/Brk**| Q        | W         | E         | R         | T         | Y         | U         | I         | O         | P         | **Bksp** / **Del** |
 | **Tab**   | A        | S         | D         | F         | G         | H         | J         | K         | L         | ; (:)     | '   (")   |
 | **Shift** | Z        | X         | C         | V         | B         | N         | M         | ,   (<)   | .   (>)   | /   (?)   | **Enter** |
-| **Caps**  | **GUI**  | **App**   | **Alt**   | **Shift** | **Lower** | **Raise** | **Space** | **Ctrl**  | **Left**  | **Down**  | **Right** |
+| **Del**   | **GUI**  | **App**   | **Alt**   | **Shift** | **Lower** | **Raise** | **Space** | **Ctrl**  | **Left**  | **Down**  | **Right** |
 
 Lower:
 
 | *Lower*   |          |           |           |           |           |           |           |           |           |           |           |
 |:---------:|:--------:|:---------:|:---------:|:---------:|:---------:|:---------:|:---------:|:---------:|:---------:|:---------:|:---------:|
-| **Esc**   | F1       | F2        | F3        | F4        |           |           | Pg Up     | Up        | Home      |           | **Bksp** / **Del** |
-| **Tab**   | F5       | F6        | F7        | F8        |           |           | Left      | Down      | Right     |           |           |
-| **Shift** | F9       | F10       | F11       | F12       |           |           | Pg Down   |           | End       |           | **Enter** |
+|**Esc/Brk**| F1       | F2        | F3        | F4        | F5        | F6        | Pg Up     | Up        | Home      |           | **Bksp** / **Del** |
+| **Alt**   | F7       | F8        | F9        | F10       | F11       | F12       | Left      | Down      | Right     |           |           |
+| **Shift** |          |           |           |           |           |           | Pg Down   |           | End       |           | **Enter** |
 | **Caps**  | **GUI**  | **App**   | **Alt**   | **Shift** | **Lower** | **Raise** | **Space** | **Ctrl**  |           | **Up**    |           |
 
 Raise:
