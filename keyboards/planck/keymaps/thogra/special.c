@@ -132,6 +132,12 @@ void pressedShift
   keyrecord_t*  record
 )
 {
+  // If shift is released, release the whole key
+  if (!record->event.pressed)
+  {
+    pressed(_key, record);
+  };
+	
   // Update shift indicator
   if (record->event.pressed)     _shift = true;
   else                           _shift = false;
@@ -139,7 +145,10 @@ void pressedShift
   // If currently one of the special key definitions is pressed
   if (_key.keycode!=0 || _key.shiftedKeycode!=0)
   {
-    _shiftEvent = true;
+    if (_shift == true)
+    {
+      _shiftEvent = true;
+    };
     pressed(_key, record);
   }
 
